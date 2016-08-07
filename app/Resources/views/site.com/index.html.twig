@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>
+            {% block title %}
+                Магазин различных товаров - Главная
+            {% endblock %}
+        </title>
+        
+        {% block stylesheets %}
+            
+        {% endblock %}
+    </head>
+    <body>
+
+        {% block body %}
+            {{ include('site.com/menu.html.twig') }}
+
+            <h1>Все товары магазина</h1>
+
+            {% block categories %}
+                <h3>Категории</h3>
+                {% for category in categories %}
+                    <ul>
+                        <li><a href="{{ path('category_name', {'slug': category.name}) }}">
+                                {{ category.name }}
+                            </a></li>
+                    </ul>
+                {% endfor %}
+            {% endblock %}
+
+            {% block products %}
+                <h3>Товары</h3>
+                <ul>
+                {% for product in products %}
+                    <li>{{ product.name }}</li>
+                {% endfor %}
+                </ul>
+            {% endblock %}
+        {% endblock %}
+        
+        {% block javascripts %}
+            
+        {% endblock %}
+    </body>
+</html>

@@ -1,0 +1,18 @@
+AppBundle\Entity\Goods:
+    type: entity
+    table: goods
+    repositoryClass: AppBundle\Repository\GoodsRepository
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+    manyToMany:
+        category:
+            targetEntity: Category
+            mappedBy: items
+    lifecycleCallbacks: {  }
